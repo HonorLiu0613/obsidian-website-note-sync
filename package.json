@@ -1,6 +1,6 @@
 {
   "name": "obsidian-website-note-sync",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Manual, conflict-aware Obsidian publishing for Jekyll, Markdown websites, CSDN and Zhihu drafts.",
   "scripts": {
     "build": "node scripts/build.cjs",

@@ -49,12 +49,16 @@ function matchesScope(file,paths){
   const value=process.platform==='win32'?file.toLowerCase():file;
   return paths.some(entry=>{const target=process.platform==='win32'?entry.toLowerCase():entry;return value===target;});
 }
+function normalizeAbsolute(value){
+  let candidate=String(value||'').trim().replace(/^\/([a-zA-Z])\//,'$1:/');
+  return path.normalize(path.resolve(candidate)).replace(/[\\/]+$/,'').toLowerCase();
+}
 async function plan(root,settings={},scopePaths) {
   root=path.resolve(root);
   const options={executable:settings.gitExecutable||defaultExecutable()};
   const git=args=>run(root,args,options);
   const top=(await git(['rev-parse','--show-toplevel'])).stdout.trim();
-  if(fs.realpathSync(top).toLowerCase()!==fs.realpathSync(root).toLowerCase())throw new Error('网站目录必须是 Git 仓库根目录。');
+  if(normalizeAbsolute(top)!==normalizeAbsolute(root))throw new Error('网站目录必须是 Git 仓库根目录。');
   const branch=(await git(['symbolic-ref','--quiet','--short','HEAD'])).stdout.trim();
   const remote=String(settings.gitRemote||'origin').trim();
   if(!/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/.test(remote))throw new Error('Git 远程名称无效。');
@@ -110,4 +114,4 @@ async function publish(root,settings,expected,message,scopePaths) {
   }
   return {commit,committed,remote:current.remote,branch:current.branch,files:current.files.length};
 }
-module.exports={defaultExecutable,redact,run,plan,publish,signature,matchesScope};
+module.exports={defaultExecutable,redact,run,plan,publish,signature,matchesScope,normalizeAbsolute};

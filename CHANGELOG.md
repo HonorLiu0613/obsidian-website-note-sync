@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1
+
+- Normalize Git top-level paths across Windows drive and slash formats so the publishing safety check works on Windows runners.
+
 ## 2.1.0
 
 - Publish as a standalone open-source repository with bilingual setup guides and a Jekyll starter site.
