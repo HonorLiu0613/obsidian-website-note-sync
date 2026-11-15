@@ -47,6 +47,8 @@ test('publishing commits exact plugin-owned files and leaves sibling edits untou
 test('scope matching includes only exact generated file paths',()=>{
   assert.equal(publisher.matchesScope('content/notes/a.md',['content/notes/a.md']),true);
   assert.equal(publisher.matchesScope('content/notes/other.md',['content/notes/a.md']),false);
-  assert.equal(publisher.normalizeAbsolute('C:/site/notes'),'c:\\site\\notes');
-  assert.equal(publisher.normalizeAbsolute('/c/site/notes'),'c:\\site\\notes');
+  if(process.platform==='win32'){
+    assert.equal(publisher.normalizeAbsolute('C:/site/notes'),'c:\\site\\notes');
+    assert.equal(publisher.normalizeAbsolute('/c/site/notes'),'c:\\site\\notes');
+  }else assert.equal(publisher.normalizeAbsolute('/tmp/site/notes'),'/tmp/site/notes');
 });

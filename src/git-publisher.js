@@ -51,6 +51,7 @@ function matchesScope(file,paths){
 }
 function normalizeAbsolute(value){
   let candidate=String(value||'').trim().replace(/^\/([a-zA-Z])\//,'$1:/');
+  try{candidate=fs.realpathSync(candidate);}catch{}
   return path.normalize(path.resolve(candidate)).replace(/[\\/]+$/,'').toLowerCase();
 }
 async function plan(root,settings={},scopePaths) {

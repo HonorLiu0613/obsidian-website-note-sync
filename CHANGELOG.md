@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.2
+
+- Make the test command portable across Windows, macOS, and Linux shells.
+- Resolve Git repository roots through real paths so macOS temporary-directory symlinks do not block safe publishing.
+
 ## 2.1.1
 
 - Normalize Git top-level paths across Windows drive and slash formats so the publishing safety check works on Windows runners.
