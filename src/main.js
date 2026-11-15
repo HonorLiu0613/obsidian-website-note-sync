@@ -20,6 +20,11 @@ module.exports=class WebsiteNoteSync extends Plugin {
   async onload() {
     this.data=await this.loadData()||{};
     this.settings=loadSettings(this.data.settings);
+    // Migrate retired platform values and normalize defaults in the saved plugin data.
+    if(JSON.stringify(this.data.settings||{})!==JSON.stringify(this.settings)){
+      this.data={...this.data,settings:this.settings};
+      await this.saveData(this.data);
+    }
     this.state=this.data.state||{};
     this.scopes=this.data.scopes||{};this.currentScope=this.data.scope||null;
     this.mediaBridge=new media.MediaBridge(async result=>{

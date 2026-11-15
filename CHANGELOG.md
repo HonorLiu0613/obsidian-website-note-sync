@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.4
+
+- Migrate old saved settings on plugin startup so retired Xiaohongshu and Douyin values are removed from `data.json` automatically.
+
 ## 2.1.3
 
 - Use Git's repository prefix check for portable root validation on Windows, macOS, and Linux.
