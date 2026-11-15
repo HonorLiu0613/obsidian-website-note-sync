@@ -1,0 +1,38 @@
+name: Bug report
+description: Report a reproducible problem without exposing private notes or credentials.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Plugin and Obsidian versions
+      placeholder: Website Note Sync 2.1.0, Obsidian 1.x
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Windows, macOS, Linux]
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Website mode
+      options: [Jekyll, Generic Markdown, Media draft only, Not applicable]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and expected behavior
+      description: Remove private note text, local paths, URLs containing credentials, cookies, and tokens.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error text
+      description: Paste only the relevant error. Do not attach vault or browser profile data.

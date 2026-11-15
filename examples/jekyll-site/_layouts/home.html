@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/border.css' | relative_url }}">
+</head>
+<body>
+  <main class="note-body">
+    <h1>{{ page.title | escape }}</h1>
+    <p>A minimal Jekyll site for checking notes exported from Obsidian.</p>
+    <h2>Published notes</h2>
+    <ul>
+      {% assign published_notes = site.notes | where: "publish", true | sort: "date" | reverse %}
+      {% for note in published_notes %}
+      <li><a href="{{ note.url | relative_url }}">{{ note.title | escape }}</a></li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+</html>

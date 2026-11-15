@@ -1,0 +1,14 @@
+title: Website Note Sync Example
+url: ""
+baseurl: ""
+markdown: kramdown
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+defaults:
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note

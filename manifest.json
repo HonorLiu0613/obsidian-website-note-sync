@@ -1,0 +1,10 @@
+{
+  "id": "website-note-sync",
+  "name": "Website Note Sync",
+  "version": "2.1.0",
+  "minAppVersion": "1.6.0",
+  "description": "Preview and sync public notes with Jekyll or Markdown websites, push reviewed changes with Git, and prepare CSDN or Zhihu drafts.",
+  "author": "Haoran Liu",
+  "authorUrl": "https://github.com/HonorLiu0613",
+  "isDesktopOnly": true
+}
