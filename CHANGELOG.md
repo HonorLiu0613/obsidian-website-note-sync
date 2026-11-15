@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.3
+
+- Use Git's repository prefix check for portable root validation on Windows, macOS, and Linux.
+
 ## 2.1.2
 
 - Make the test command portable across Windows, macOS, and Linux shells.
